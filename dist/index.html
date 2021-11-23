@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/handlebars/dist/handlebars.js"></script>
+    <script src="/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Recipe App</title>
+</head>
+<body>
+    
+    <script id="recipes-template" type="text/x-handlebars-template">
+        {{#each results}}
+            <div class="recipe">
+                <a href="{{href}}">{{title}}</a>
+                <img src="{{thumbnail}}" class="recipeImg" />
+                <p>Ingredients</p>
+                <ul class="ingredients">
+                {{#each ingredients}}
+                    <li>{{this}}</li>
+                {{/each}}
+                </ul>
+            </div>
+        {{/each}}
+  </script>
+
+  <div class="search-container">
+    <input class="input" type="text" placeholder="Ingredient Name"></input>
+    <button class="btn">Search</button>
+</div>
+
+    <div class="container"></div>
+
+    <script src="Renderer.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
