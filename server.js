@@ -1,5 +1,7 @@
 const express = require('express')
 const path = require('path')
+const request = require('request')
+
 
 
 const app = express()
@@ -13,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'node_modules')))
 app.get('/recipes/:ingredient', function (req, res) {
     let ingredient = req.params.ingredient
     
-   urllib.request(`https://recipes-goodness.herokuapp.com/recipes/${ingredient}`, function(err, response, data){
+   request(`https://recipes-goodness.herokuapp.com/recipes/${ingredient}`, function(err, response, data){
         recipes = JSON.parse(data).results.map(recipe => {return {title: recipe.title,thumbnail: recipe.thumbnail,href:recipe.href,ingredients:recipe.ingredients}})
 
         res.send(recipes)
